@@ -7,7 +7,15 @@ const int SIZE = 7;
 struct Node {
     float value;
     Node *next;
-}
+};
+
+//Function Prototypes
+void output(Node *);
+void addFront(Node *&, float);
+void addTail(Node *&, float);
+void deleteNode(Node *&, int);
+void insertNode(Node *&, int, float);
+void deleteList(Node *&);
 
 int main()
 {
@@ -41,6 +49,12 @@ int main()
     insertNode(head, entry, 10000);
     output(head);
 
+    //delete entire list
+    deleteList(head);
+    output(head);
+
+    return 0;
+
 
 }
 
@@ -58,7 +72,7 @@ void output(Node *hd)
 
     while (current)
     {
-        cout << "[" << count++ << "]" << current->value << endl;
+        cout << "[" << count++ << "] " << current->value << endl;
         current = current->next;
     }
     cout << endl;
@@ -101,7 +115,7 @@ void deleteNode(Node *&head, int pos)
     Node *current = head;
     Node * prev = nullptr;
 
-    for (int i = 0; i > pos && current; i++)
+    for (int i = 1; i < pos && current; i++)
     {
         prev = current;
         current = current->next;
